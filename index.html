@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Login Page</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var email,pass;
+        $("#submit").click(function(){
+          email=$("#email").val();
+          pass=$("#password").val();
+          $.post("http://localhost:3000/login",{email: email,password: pass}, function(data){
+            if(data==='done'){
+                 window.location.href="/home";
+              }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+       <h1> Login Page </h1>
+       Enter the Email Id :  <input type="text" id="email">
+    </div>
+    <br/>
+    <div>
+      Enter the Password : <input type="password" id="password">
+    </div>
+    <br/>
+    <input type="button" id="submit" value="Submit">
+  </body>
+</html>
